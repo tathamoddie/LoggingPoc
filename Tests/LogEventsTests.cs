@@ -1,4 +1,5 @@
-﻿using Logging;
+﻿using System.Linq;
+using Logging;
 using NUnit.Framework;
 
 namespace Tests
@@ -11,6 +12,13 @@ namespace Tests
         {
             var id = LogEvents.ExpiredAuthenticationContext.EventId;
             Assert.AreEqual(1234, id);
+        }
+
+        [Test]
+        public void AllEventsShouldReturnEntryForEachEvent()
+        {
+            var allEvents = LogEvents.AllEvents.ToArray();
+            Assert.AreEqual(2, allEvents.Length);
         }
     }
 }
