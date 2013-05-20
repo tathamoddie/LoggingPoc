@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Tests
 {
     [TestFixture]
-    public class LogEventsTests
+    public class FrameworkTests
     {
         [Test]
         public void ShouldBeAbleToAccessIndividualId()

@@ -1,29 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace Logging
+﻿namespace Logging
 {
-    public static class LogEvents
+    public static partial class LogEvents
     {
-        public class LogEvent
-        {
-            public long EventId { get; set; }
-            public string ShortDescription { get; set; }
-            public string OperationalGuidance { get; set; }
-        }
-
-        public static IEnumerable<LogEvent> AllEvents
-        {
-            get
-            {
-                return typeof (LogEvents)
-                    .GetFields(BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly)
-                    .Where(f => f.FieldType == typeof (LogEvent))
-                    .Select(f => (LogEvent) f.GetValue(null));
-            }
-        }
-
         public static readonly LogEvent ExpiredAuthenticationContext = new LogEvent
         {
             EventId = 1234,
